@@ -264,7 +264,7 @@ public class RootShell {
      * @param shellPath a <code>String</code> to Indicate the path to the shell that you want to open.
      * @param timeout   an <code>int</code> to Indicate the length of time before giving up on opening a shell.
      * @throws TimeoutException
-     * @throws com.stericson.RootShell.exceptions.RootDeniedException
+     * @throws RootDeniedException
      * @throws IOException
      */
     public static Shell getCustomShell(String shellPath, int timeout) throws IOException, TimeoutException, RootDeniedException {
