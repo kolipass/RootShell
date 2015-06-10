@@ -22,13 +22,13 @@
 
 package com.stericson.RootShell.execution;
 
-import com.stericson.RootShell.RootShell;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+
+import com.stericson.RootShell.RootShell;
 
 import java.io.IOException;
 
@@ -152,8 +152,7 @@ public class Command {
         }
     }
 
-    public final void finish()
-    {
+    public final void finish() {
         RootShell.log("Command finished at users request!");
         commandFinished();
     }
@@ -208,8 +207,7 @@ public class Command {
         executing = true;
     }
 
-    public final void terminate()
-    {
+    public final void terminate() {
         RootShell.log("Terminating command at users request!");
         terminated("Terminated at users request!");
     }
@@ -259,8 +257,7 @@ public class Command {
         }
     }
 
-    public final void resetCommand()
-    {
+    public final void resetCommand() {
         this.finished = false;
         this.totalOutput = 0;
         this.totalOutputProcessed = 0;
@@ -273,8 +270,7 @@ public class Command {
 
         public void run() {
 
-            if(timeout > 0)
-            {
+            if (timeout > 0) {
                 //We need to kill the command after the given timeout
                 while (!finished) {
 

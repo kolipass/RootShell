@@ -22,11 +22,11 @@
 package com.stericson.RootShell;
 
 
+import android.util.Log;
+
 import com.stericson.RootShell.exceptions.RootDeniedException;
 import com.stericson.RootShell.execution.Command;
 import com.stericson.RootShell.execution.Shell;
-
-import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -176,7 +176,6 @@ public class RootShell {
 
     /**
      * @param binaryName String that represent the binary to find.
-     *
      * @return <code>List<String></code> containing the locations the binary was found at.
      */
     public static List<String> findBinary(final String binaryName) {
@@ -184,9 +183,8 @@ public class RootShell {
     }
 
     /**
-     * @param binaryName <code>String</code> that represent the binary to find.
+     * @param binaryName  <code>String</code> that represent the binary to find.
      * @param searchPaths <code>List<String></code> which contains the paths to search for this binary in.
-     *
      * @return <code>List<String></code> containing the locations the binary was found at.
      */
     public static List<String> findBinary(final String binaryName, List<String> searchPaths) {
@@ -195,8 +193,7 @@ public class RootShell {
 
         boolean found = false;
 
-        if(searchPaths == null)
-        {
+        if (searchPaths == null) {
             searchPaths = RootShell.getPath();
         }
 
@@ -206,8 +203,7 @@ public class RootShell {
         try {
             for (String path : searchPaths) {
 
-                if(!path.endsWith("/"))
-                {
+                if (!path.endsWith("/")) {
                     path += "/";
                 }
 
@@ -243,8 +239,7 @@ public class RootShell {
 
             for (String path : searchPaths) {
 
-                if(!path.endsWith("/"))
-                {
+                if (!path.endsWith("/")) {
                     path += "/";
                 }
 
@@ -272,8 +267,7 @@ public class RootShell {
      * @throws com.stericson.RootShell.exceptions.RootDeniedException
      * @throws IOException
      */
-    public static Shell getCustomShell(String shellPath, int timeout) throws IOException, TimeoutException, RootDeniedException
-    {
+    public static Shell getCustomShell(String shellPath, int timeout) throws IOException, TimeoutException, RootDeniedException {
         return RootShell.getCustomShell(shellPath, timeout);
     }
 
@@ -392,8 +386,7 @@ public class RootShell {
     /**
      * @return <code>true</code> if BusyBox was found.
      */
-    public static boolean isBusyboxAvailable()
-    {
+    public static boolean isBusyboxAvailable() {
         return (findBinary("busybox")).size() > 0;
     }
 

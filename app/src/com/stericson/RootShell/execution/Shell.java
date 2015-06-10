@@ -21,11 +21,10 @@
  */
 package com.stericson.RootShell.execution;
 
+import android.content.Context;
+
 import com.stericson.RootShell.RootShell;
 import com.stericson.RootShell.exceptions.RootDeniedException;
-
-import android.content.Context;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.EOFException;
@@ -397,7 +396,7 @@ public class Shell {
 
     /**
      * From libsuperuser.
-     *
+     * <p/>
      * <p>
      * Detects the version of the su binary installed (if any), if supported
      * by the binary. Most binaries support two different version numbers,
@@ -499,7 +498,7 @@ public class Shell {
 
     /**
      * From libsuperuser.
-     *
+     * <p/>
      * Detect if SELinux is set to enforcing, caches result
      *
      * @return true if SELinux set to enforcing, or false in the case of
@@ -636,7 +635,7 @@ public class Shell {
 
     /**
      * Runnable to monitor the responses from the open shell.
-     *
+     * <p/>
      * This include the output and error stream
      */
     private Runnable output = new Runnable() {
@@ -720,16 +719,14 @@ public class Shell {
                                 int iterations = 0;
                                 while (command.totalOutput > command.totalOutputProcessed) {
 
-                                    if(iterations == 0)
-                                    {
+                                    if (iterations == 0) {
                                         iterations++;
                                         RootShell.log("Waiting for output to be processed. " + command.totalOutputProcessed + " Of " + command.totalOutput);
                                     }
 
                                     try {
 
-                                        synchronized (this)
-                                        {
+                                        synchronized (this) {
                                             this.wait(2000);
                                         }
                                     } catch (Exception e) {
@@ -762,13 +759,10 @@ public class Shell {
                         command = commands.get(read);
                     }
 
-                    if(command.totalOutput < command.totalOutputProcessed)
-                    {
+                    if (command.totalOutput < command.totalOutputProcessed) {
                         command.terminated("All output not processed!");
                         command.terminated("Did you forget the super.commandOutput call or are you waiting on the command object?");
-                    }
-                    else
-                    {
+                    } else {
                         command.terminated("Unexpected Termination.");
                     }
 
